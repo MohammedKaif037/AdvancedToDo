@@ -18,7 +18,7 @@
     <main>
         <section id="taskInput">
             <input type="text" id="newTaskInput" placeholder="Enter a new task">
-            <input type="date" id="dueDateInput">
+            <input type="text" id="dueDateInput" placeholder="dd/mm/yyyy">
             <select id="priorityInput">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -45,6 +45,14 @@
         </section>
          
     </main>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+            <script>
+              new Pikaday({
+                field: document.getElementById('dueDateInput'),
+                format: 'DD/MM/YYYY'
+              });
+            </script>
     <script src="app.js"></script>
 </body>
 </html>
