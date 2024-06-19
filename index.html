@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Task Management App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Task Management App</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="themeToggle">Toggle Theme</a></li>
+             </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="taskInput">
+            <input type="text" id="newTaskInput" placeholder="Enter a new task">
+            <input type="date" id="dueDateInput">
+            <select id="priorityInput">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button id="addTaskBtn">Add Task</button>
+        </section>
+        <section id="taskList">
+            <h2>Tasks</h2>
+            <input type="text" id="searchInput" placeholder="Search tasks...">
+            <select id="filterSelect">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="incomplete">Incomplete</option>
+                <option value="overdue">Overdue</option>
+            </select>
+            <select id="sortSelect">
+                <option value="dueDateAsc">Due Date (Ascending)</option>
+                <option value="dueDateDesc">Due Date (Descending)</option>
+                <option value="priorityAsc">Priority (Ascending)</option>
+                <option value="priorityDesc">Priority (Descending)</option>
+            </select>
+            <ul id="taskListUl"></ul>
+        </section>
+         
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
