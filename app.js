@@ -103,24 +103,19 @@ function deleteTask(index) {
 
 // Toggle task completion
 function toggleTaskCompletion(index) {
-    const taskItem = taskListUl.children[index];
-    const progressBar = taskItem.querySelector('.progress-bar');
-    const checkbox = taskItem.querySelector('input[type="checkbox"]');
+  const taskItem = taskListUl.children[index];
+  const progressBar = taskItem.querySelector('.progress-bar');
+  const checkbox = taskItem.querySelector('input[type="checkbox"]');
 
-    let currentWidth = parseInt(progressBar.style.width) || 0;
-    currentWidth += 20;
+  if (checkbox.checked) {
+      tasks[index].completed = true;
+      progressBar.style.width = '100%';
+  } else {
+      tasks[index].completed = false;
+      progressBar.style.width = '0%';
+  }
 
-    if (currentWidth >= 100) {
-        currentWidth = 100;
-        tasks[index].completed = true;
-        checkbox.checked = true;
-    } else {
-        tasks[index].completed = false;
-        checkbox.checked = false;
-    }
-
-    progressBar.style.width = currentWidth + '%';
-    saveTasksToLocalStorage();
+  saveTasksToLocalStorage();
 }
 
 // Edit task
