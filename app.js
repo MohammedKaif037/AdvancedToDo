@@ -118,7 +118,6 @@ function toggleTaskCompletion(index) {
   saveTasksToLocalStorage();
 }
 
-// Edit task
 function editTask(index) {
   const li = taskListUl.children[index];
   const task = tasks[index];
@@ -131,9 +130,9 @@ function editTask(index) {
   input.focus();
   input.select();
 
-  // Stop progressing the progress bar
+  // Ensure the progress bar does not progress while editing
   const progressBar = li.querySelector('.progress-bar');
-  progressBar.style.width = `${tasks[index].completed ? '100%' : '0%'}`;
+  progressBar.style.width = '0%'; // Set progress to 0%
 
   input.addEventListener('blur', () => {
       task.text = input.value.trim();
@@ -147,6 +146,7 @@ function editTask(index) {
       }
   });
 }
+
 // Filter tasks
 function filterTasks(tasks, filter) {
     switch (filter) {
