@@ -120,30 +120,33 @@ function toggleTaskCompletion(index) {
 
 // Edit task
 function editTask(index) {
-    const li = taskListUl.children[index];
-    const task = tasks[index];
-    const taskTextSpan = li.querySelector('span');
-    const taskText = taskTextSpan.textContent;
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.value = taskText;
-    li.replaceChild(input, taskTextSpan);
-    input.focus();
-    input.select();
-    
-    input.addEventListener('blur', () => {
-        task.text = input.value.trim();
-        saveTasksToLocalStorage();
-        renderTasks();
-    });
+  const li = taskListUl.children[index];
+  const task = tasks[index];
+  const taskTextSpan = li.querySelector('span');
+  const taskText = taskTextSpan.textContent;
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = taskText;
+  li.replaceChild(input, taskTextSpan);
+  input.focus();
+  input.select();
 
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            input.blur();
-        }
-    });
+  // Stop progressing the progress bar
+  const progressBar = li.querySelector('.progress-bar');
+  progressBar.style.width = `${tasks[index].completed ? '100%' : '0%'}`;
+
+  input.addEventListener('blur', () => {
+      task.text = input.value.trim();
+      saveTasksToLocalStorage();
+      renderTasks();
+  });
+
+  input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+          input.blur();
+      }
+  });
 }
-
 // Filter tasks
 function filterTasks(tasks, filter) {
     switch (filter) {
