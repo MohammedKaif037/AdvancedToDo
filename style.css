@@ -69,6 +69,7 @@ body {
   /* Task Input Styles */
   #taskInput {
     display: flex;
+    flex-wrap: wrap; /* Added for mobile responsiveness */
     margin-bottom: 20px;
   }
   
@@ -131,153 +132,10 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-color:#f9f9f9;
-  position: relative;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .task-item:hover {
-  background-color: #e0e0e0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .task-item input[type="checkbox"] {
-  margin-right: 10px;
-  }
-  
-  .task-item .due-date,
-  .task-item .priority {
-  margin-left: 10px;
-  font-size: 14px;
-  color: #666;
-  }
-  
-  .task-item button {
-  background-color: transparent;
-  border: none;
-  color: #666;
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: color 0.3s ease;
-  }
-  
-  .task-item button:hover {
-  color: #333;
-  }
-  
-  .progress-bar {
-  height: 5px;
-  background-color: #ccc;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  transition: width 0.3s ease;
-  }
-  
-  .task-item.completed .progress-bar {
-  background-color: #4b6cb7;
-  width: 100%;
-  }
-  
-  /* Dark Theme Styles */
-  body.dark-theme {
-  background: linear-gradient(to right, #333, #555);
-  color: #fff;
-  }
-  
-  body.dark-theme header {
-  background-color: #222;
-  }
-  
-  body.dark-theme nav a:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-  }
-  
-  body.dark-theme main {
-  background-color: #444;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  body.dark-theme #newTaskInput,
-  body.dark-theme #dueDateInput,
-  body.dark-theme #priorityInput,
-  body.dark-theme #searchInput,
-  body.dark-theme #filterSelect,
-  body.dark-theme #sortSelect {
-  background-color: #555;
-  color: #fff;
-  border: 1px solid #666;
-  }
-  
-  body.dark-theme .task-item {
-  background-color: #555;
-  border: 1px solid #666;
-  }
-  
-  body.dark-theme .task-item:hover {
-  background-color: #666;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  body.dark-theme .task-item .due-date,
-  body.dark-theme .task-item .priority {
-  color: #ccc;
-  }
-  
-  body.dark-theme .task-item button {
-  color: #ccc;
-  }
-  
-  body.dark-theme .task-item button:hover {
-  color: #fff;
-  }
-  
-  body.dark-theme .progress-bar {
-  background-color: #666;
-  }
-  
-  body.dark-theme .task-item.completed .progress-bar {
-  background-color: #4b6cb7;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-  0% {
-  opacity: 0;
-  }
-  100% {
-  opacity: 1;
-  }
-  }
-  
-  .task-item {
-  animation: fadeIn 0.5s ease;
-  }
-  
-  /* Transitions */
-  .task-item button,
-  .task-item input[type="checkbox"] {
-  transition: transform 0.3s ease;
-  }
-  
-  .task-item button:hover,
-  .task-item input[type="checkbox"]:hover {
-  transform: scale(1.2);
-  }
-  .task-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
     background-color: #f9f9f9;
     position: relative;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    justify-content: space-between; /* Add this line */
+    justify-content: space-between;
   }
   
   .task-item:hover {
@@ -309,3 +167,124 @@ body {
   .task-item button:hover {
     color: #333;
   }
+  
+  .progress-bar {
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    transition: width 0.3s ease;
+    background-color: #4b6cb7;
+  }
+  
+  body.light-theme .progress-bar {
+    background-color: #4b6cb7; /* Blue progress bar for light theme */
+  }
+  
+  body.dark-theme .progress-bar {
+    background-color: #fff; /* White progress bar for dark theme */
+  }
+  
+  .task-item.completed .progress-bar {
+    width: 100%;
+  }
+  
+  /* Dark Theme Styles */
+  body.dark-theme {
+    background: linear-gradient(to right, #333, #555);
+    color: #fff;
+  }
+  
+  body.dark-theme header {
+    background-color: #222;
+  }
+  
+  body.dark-theme nav a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  body.dark-theme main {
+    background-color: #444;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-theme #newTaskInput,
+  body.dark-theme #dueDateInput,
+  body.dark-theme #priorityInput,
+  body.dark-theme #searchInput,
+  body.dark-theme #filterSelect,
+  body.dark-theme #sortSelect {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #666;
+  }
+  
+  body.dark-theme .task-item {
+    background-color: #555;
+    border: 1px solid #666;
+  }
+  
+  body.dark-theme .task-item:hover {
+    background-color: #666;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-theme .task-item .due-date,
+  body.dark-theme .task-item .priority {
+    color: #ccc;
+  }
+  
+  body.dark-theme .task-item button {
+    color: #ccc;
+  }
+  
+  body.dark-theme .task-item button:hover {
+    color: #fff;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .task-item {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Transitions */
+  .task-item button,
+  .task-item input[type="checkbox"] {
+    transition: transform 0.3s ease;
+  }
+  
+  .task-item button:hover,
+  .task-item input[type="checkbox"]:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 600px) {
+    #taskInput {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    #newTaskInput,
+ #dueDateInput,
+ #priorityInput {
+   border-radius: 5px;
+   border-left: 1px solid #ccc;
+   margin-bottom: 10px;
+ }
+
+ #addTaskBtn {
+   border-radius: 5px;
+ }
+}
