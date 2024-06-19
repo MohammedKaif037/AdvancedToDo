@@ -280,22 +280,26 @@ themeSelect.addEventListener('change', () => {
 });
 function handleTaskClick(e) {
   const li = e.currentTarget;
-  const progress = li.querySelector('.progress');
-  if (!progress) {
-      const progressBar = document.createElement('div');
-      progressBar.classList.add('progress');
-      li.appendChild(progressBar);
-      progress = progressBar;
+  const checkbox = li.querySelector('input[type="checkbox"]');
+  const progressBar = li.querySelector('.progress-bar');
+  const index = li.dataset.index;
+
+  if (!tasks[index].completed) {
+      // Progress the bar by 20% on each click, up to 100%
+      let currentWidth = parseInt(progressBar.style.width) || 0;
+      currentWidth += 20;
+      if (currentWidth >= 100) {
+          currentWidth = 100;
+          tasks[index].completed = true;
+          checkbox.checked = true;
+      }
+      progressBar.style.width = currentWidth + '%';
+  } else {
+      // If the task is already completed, reset the progress bar
+      tasks[index].completed = false;
+      checkbox.checked = false;
+      progressBar.style.width = '0%';
   }
 
-  let currentProgress = progress.classList.length === 1 ? 0 : parseInt(progress.classList[1].replace('progress-', ''), 10);
-  currentProgress += 20;
-  if (currentProgress > 100) {
-      currentProgress = 0;
-  }
-
-  progress.className = 'progress';
-  if (currentProgress !== 0) {
-      progress.classList.add(`progress-${currentProgress}`);
-  }
+  saveTasksToLocalStorage();
 }
